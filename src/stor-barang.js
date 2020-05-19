@@ -25,6 +25,12 @@ const edit = (id, barang, harga) => {
   })
 }
 
+const remove = (id) => {
+  storbarang.update((items) => {
+    return items.filter((i) => i.id !== id)
+  })
+}
+
 if (localStorage.getItem('barangan')) {
   storbarang.set(JSON.parse(localStorage.getItem('barangan')))
 }
@@ -38,4 +44,5 @@ export default {
   langgan: storbarang.subscribe,
   tambah,
   edit,
+  remove,
 }

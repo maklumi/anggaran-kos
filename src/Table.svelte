@@ -23,6 +23,10 @@
   function edit(id, nama, harga) {
     dispatch('sunting', { id, nama, harga })
   }
+
+  function remove(id) {
+    storbarang.remove(id)
+  }
 </script>
 
 <style>
@@ -31,6 +35,9 @@
   }
   tr {
     cursor: pointer;
+  }
+  tr:last-of-type {
+    cursor: inherit;
   }
 </style>
 
@@ -48,7 +55,7 @@
         <td>{barang}</td>
         <td>{formatter.format(harga)}</td>
         <td>
-          <i class="far fa-trash-alt" />
+          <i class="far fa-trash-alt" on:click|stopPropagation={remove(id)} />
         </td>
       </tr>
     {/each}
