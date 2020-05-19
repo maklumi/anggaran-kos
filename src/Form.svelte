@@ -1,5 +1,7 @@
 <script>
-  export let id = 9
+  import storbarang from './stor-barang'
+
+  export let id
   export let nama = ''
   export let harga
 
@@ -10,11 +12,14 @@
     if (!valid) {
       return
     }
+    if (mode === 'tambah') {
+      storbarang.tambah(nama, harga)
+    }
     reset()
   }
 
   function reset() {
-    price = ''
+    harga = ''
     name = ''
     id = undefined
   }
@@ -51,11 +56,11 @@
     disabled={!valid}
     class="float-right"
     type="submit"
-    on:submit|preventDefault={hanto}>
+    on:click|preventDefault={hanto}>
     {mode}
   </button>
   {#if mode === 'edit'}
-    <button class="float-right" type="button" on:submit|preventDefault={reset}>
+    <button class="float-right" type="button" on:click|preventDefault={reset}>
       Kensel
     </button>
   {/if}
