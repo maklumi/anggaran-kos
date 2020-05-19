@@ -15,12 +15,15 @@
     if (mode === 'tambah') {
       storbarang.tambah(nama, harga)
     }
+    if (mode === 'edit') {
+      storbarang.edit(id, nama, harga)
+    }
     reset()
   }
 
   function reset() {
     harga = ''
-    name = ''
+    nama = ''
     id = undefined
   }
 </script>
@@ -60,7 +63,7 @@
     {mode}
   </button>
   {#if mode === 'edit'}
-    <button class="float-right" type="button" on:click|preventDefault={reset}>
+    <button class="float-right" type="button" on:click|preventDefault={hanto}>
       Kensel
     </button>
   {/if}

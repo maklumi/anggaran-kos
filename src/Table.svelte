@@ -1,5 +1,8 @@
 <script>
+  import { createEventDispatcher } from 'svelte'
   import storbarang from './stor-barang'
+
+  const dispatch = createEventDispatcher()
 
   let barangan = []
 
@@ -16,11 +19,18 @@
     style: 'currency',
     currency: 'MYR',
   })
+
+  function edit(id, nama, harga) {
+    dispatch('sunting', { id, nama, harga })
+  }
 </script>
 
 <style>
   table {
     width: 100%;
+  }
+  tr {
+    cursor: pointer;
   }
 </style>
 
@@ -34,7 +44,7 @@
   </thead>
   <tbody>
     {#each barangan as { barang, harga, id } (id)}
-      <tr>
+      <tr on:click={edit(id, barang, harga)}>
         <td>{barang}</td>
         <td>{formatter.format(harga)}</td>
         <td>
