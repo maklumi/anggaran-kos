@@ -19,7 +19,6 @@ if (localStorage.getItem('barangan')) {
 }
 
 storbarang.subscribe((stor) => {
-  console.log(stor, 'storbarang')
   const ite = JSON.stringify(stor)
   localStorage.setItem('barangan', ite)
 })
